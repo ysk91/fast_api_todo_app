@@ -12,3 +12,5 @@ $ docker-compose up -d
 # コンテナに入る
 $ docker-compose exec demo-app bash
 ```
+
+Swagger UI: http://localhost:8000/docs
