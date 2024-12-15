@@ -29,6 +29,5 @@ class TaskCreate(TaskBase):
 class TaskCreateResponse(TaskCreate):
     id: int
 
-
     class Config:
         orm_mode = True
