@@ -38,6 +38,7 @@ async def create_task(
 
 
 # 受け取ったtask_idに対応するタスクを1つ取得する
+# PUTやDELETEの対象taskを取得するために使用
 async def get_task(db: AsyncSession, task_id: int) -> Optional[task_model.Task]:
     result: Result = await db.execute(
         # SELECT * FROM tasks WHERE id = task_id
@@ -56,3 +57,8 @@ async def update_task(
     await db.commit()
     await db.refresh(original)
     return original
+
+
+async def delete_task(db: AsyncSession, original: task_model.Task) -> None:
+    await db.delete(original)
+    await db.commit()
