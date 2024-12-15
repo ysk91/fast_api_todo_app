@@ -32,6 +32,8 @@ async def create_task(
     # DBに保存
     db.add(task)
     await db.commit()
+    # データベースから最新の状態を取得してオブジェクトを更新
+    # DB格納時に自動生成されるIDやcreated_atなどがtaskオブジェクトに反映される
     await db.refresh(task)
     # 作成したインスタンスを返す
     return task
