@@ -26,9 +26,9 @@ class TaskCreate(TaskBase):
 
 
 # POST /tasksした後のレスポンスのスキーマ
+# TaskCreateを継承して、idを追加
 class TaskCreateResponse(TaskCreate):
     id: int
-
 
     class Config:
         orm_mode = True

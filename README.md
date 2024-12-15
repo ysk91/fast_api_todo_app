@@ -15,6 +15,8 @@ $ docker-compose run --entrypoint "poetry install --no-root" demo-app
 $ docker-compose build --no-cache
 # コンテナの起動
 $ docker-compose up -d
+# データベスの作成
+$ docker-compose exec demo-app poetry run python -m api.migrate_db
 # コンテナに入る
 $ docker-compose exec demo-app bash
 ```
