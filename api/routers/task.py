@@ -10,8 +10,8 @@ router = APIRouter()
 
 
 @router.get("/tasks", response_model=List[task_schema.Task])
-async def list_tasks():
-    return [task_schema.Task(id=1, title="1つ目のTODOタスク")] # ハードコーディング
+async def list_tasks(db: AsyncSession = Depends(get_db)):
+    return await task_crud.get_tasks_with_done(db)
 
 
 @router.post("/tasks", response_model=task_schema.TaskCreateResponse)
